@@ -1,3 +1,4 @@
+use16
 enter_pm:
     cli
     lgdt [gdt]
@@ -6,6 +7,7 @@ enter_pm:
     mov cr0, eax
     jmp CODE_SEG:enter_pm
 
+use32
 init_pm:
     mov ax, DATA_SEG
     mov ds, ax
