@@ -1,0 +1,7 @@
+VGA = 0xb8000
+
+macro putc c, x, y, color {
+    index = 2 * (x + y * 80)
+    mov byte [VGA+index], c
+    mov byte [VGA+index+1], color
+}

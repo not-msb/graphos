@@ -1,24 +1,20 @@
 org 0x7c00
 
-i = 0
-repeat msg_len
-    mov al, [msg+i]
-    int 0x10
-    i = i + 1
-end repeat
-
 jmp enter_pm
 jmp $
 
-use32
-kmain:
-    jmp $
-
-msg db "Still prints :)"
-msg_len = $ - msg
-
 include "gdt.fasm"
 include "switch.fasm"
+include "vga.fasm"
+
+use32
+kmain:
+    putc 'H', 0, 0, 0x0f
+    putc 'e', 1, 0, 0x0f
+    putc 'l', 2, 0, 0x0f
+    putc 'l', 3, 0, 0x0f
+    putc 'o', 4, 0, 0x0f
+    jmp $
 
 repeat 510-($-$$)
     db 0
