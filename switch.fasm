@@ -1,0 +1,17 @@
+enter_pm:
+    cli
+    lgdt [gdt]
+    mov eax, cr0
+    or eax, 0x1
+    mov cr0, eax
+    jmp CODE_SEG:enter_pm
+
+init_pm:
+    mov ax, DATA_SEG
+    mov ds, ax
+    mov ss, ax
+    mov es, ax
+    mov fs, ax
+    mov gs, ax
+
+    jmp kmain

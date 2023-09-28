@@ -1,5 +1,4 @@
 org 0x7c00
-mov ah, 0x0e
 
 i = 0
 repeat msg_len
@@ -8,10 +7,17 @@ repeat msg_len
     i = i + 1
 end repeat
 
-hang: jmp hang
+jmp enter_pm
+jmp $
 
-msg db "Hello 16!"
+kmain:
+    jmp $
+
+msg db "Still prints :)"
 msg_len = $ - msg
+
+include "gdt.fasm"
+include "switch.fasm"
 
 repeat 510-($-$$)
     db 0
