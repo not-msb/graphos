@@ -1,0 +1,18 @@
+mov ah, 0x0e
+
+i = 0
+repeat msg_len
+    mov al, [msg+i]
+    int 0x10
+    i = i + 1
+end repeat
+
+hang: jmp hang
+
+msg db "Hello 16!"
+msg_len = $ - msg
+
+repeat 510-($-$$)
+    db 0
+end repeat
+dw 0xaa55
