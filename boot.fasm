@@ -1,20 +1,29 @@
 org 0x7c00
 
+;xor ah, ah
+;mov al, 0x13
+;int 0x10
+
 jmp enter_pm
 jmp $
 
 include "gdt.fasm"
 include "switch.fasm"
 include "vga.fasm"
+;include "graphics.fasm"
 
 use32
 kmain:
-    putc 'H', 0, 0, 0x0f
-    putc 'e', 1, 0, 0x0f
-    putc 'l', 2, 0, 0x0f
-    putc 'l', 3, 0, 0x0f
-    putc 'o', 4, 0, 0x0f
+    ;putp 0, 0, 4
+    ;drawPixel 20, 30, 2
+
+    puts msg1, 0x1f
+    puts msg2, 0x2f
+
     jmp $
+
+msg1 db "Hello, ", 0
+msg2 db "World", 0
 
 repeat 510-($-$$)
     db 0
