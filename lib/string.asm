@@ -1,4 +1,5 @@
 struc strDef [data] {
-    . db data, 0
-    .len = $ - .
+    common
+        . db data, 0
+        .len = $ - .
 }

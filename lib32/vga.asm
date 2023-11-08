@@ -39,7 +39,7 @@ putSEntry:
 
     inc ebx
     add eax, 2
-    cmp eax, ( 2* 80 * 25)
+    cmp eax, (2 * 80 * 25)
     jne .loop
 
     xor eax, eax
