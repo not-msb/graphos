@@ -1,4 +1,4 @@
-VRAM = 0xA0000
+VRAM equ 0xA0000
 
 macro putp x, y, color {
     index = x + 320 * y

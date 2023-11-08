@@ -16,4 +16,7 @@ init_pm:
     mov fs, ax
     mov gs, ax
 
-    jmp kmain
+    mov ebp, 0x18000
+    mov esp, ebp
+    jmp kernel_entry
+

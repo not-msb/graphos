@@ -8,5 +8,5 @@ gdt:
     dw gdt - gdt_start - 1
     dd gdt_start
 
-CODE_SEG = gdt_code - gdt_start
-DATA_SEG = gdt_data - gdt_start
+CODE_SEG equ gdt_code - gdt_start
+DATA_SEG equ gdt_data - gdt_start
